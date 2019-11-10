@@ -1,0 +1,14 @@
+{
+   "name": "JSONSchemaValidator",
+   "version": "1.0.0",
+   "main": "index.js",
+   "license": "MIT",
+   "scripts": {
+      "start": "node src/index.js"
+   },
+   "dependencies": {
+      "ajv": "^6.10.2",
+      "ajv-keywords": "^3.4.1",
+      "jsonschema": "^1.2.4"
+   }
+}
