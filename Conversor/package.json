@@ -1,0 +1,17 @@
+{
+   "name": "XML2JSONConversor",
+   "version": "1.0.0",
+   "main": "index.js",
+   "license": "MIT",
+   "scripts": {
+      "start": "node src/index.js"
+   },
+   "dependencies": {
+      "fast-xml-parser": "^3.14.0",
+      "he": "^1.2.0",
+      "jsonschema": "^1.2.4",
+      "xml-js": "^1.6.11",
+      "xml2js": "^0.4.22",
+      "xml2json": "^0.11.2"
+   }
+}
