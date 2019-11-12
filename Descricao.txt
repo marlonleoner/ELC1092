@@ -1,0 +1,18 @@
+Para os trabalhos que selecionaram JSON e a linguagem escolhida:
+1- transformar o arquivo de filmes em XML para JSON, sem perder conteúdo
+2- validar o JSON criado com JSON Schema correspondente
+3- aplicar consultas em JSON
+4- aplicar transformações em JSON.
+
+Em relação ao item 3 (consultas), devem ser aplicadas as seguintes consultas ao documento:
+a) Quais são os tipos de gênero de filmes, sem repetição?
+b) Quais são os títulos dos filmes que foram produzidos em 2000, ordenados alfabeticamente?
+c) Quais são os títulos em inglês dos filmes que tem a palavra “especial” na sinopse?
+d) Quais são os sites dos filmes que são do tipo “thriller”?
+e) Quantos filmes contém mais de 3 atores como elenco de apoio?
+f) Quais são os ID dos filmes que tem o nome de algum membro do elenco citado na
+sinopse?
+
+Para a parte 4 (transformação), deve se construir um código que gere um conjunto de páginas HTML para cada nodo do grafo, onde nesta página possui a informação de cada tópico (seus nomes e ocorrências), além de links para todos os tópicos que estão associados com ele. A página inicial terá a apresentação do portal e o link para todos os filmes.
+
+Ao final, compactar a apresentação e os arquivos utilizados e enviar neste post, para posterior compartilhamento com a turma, com um arquivo readme.txt onde deve estar detalhado todo o processo de instalação de ferramentas e configuração das mesmas para a sua execução.
