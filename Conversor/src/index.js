@@ -1,9 +1,7 @@
-const conversor = require("xml-js")
 const fs = require("fs")
 const he = require('he')
-const parser = require("xml2json")
 
-var par = require('fast-xml-parser');
+var conversor = require('fast-xml-parser');
 
 // Verify args
 if (process.argv.length < 3) {
@@ -26,17 +24,19 @@ const XMLFile = fs.readFileSync(filepath)
 
 //default options, need not to set
 var options = {
-   attributeNamePrefix: "@_",
-   attrNodeName: false, //default is 'false'
-   textNodeName: "#text",
+   attributeNamePrefix: "_",
    ignoreAttributes: false,
    ignoreNameSpace: false,
    parseNodeValue: false,
    parseAttributeValue: false,
-   trimValues: true,
+   trimValues: false,
    attrValueProcessor: (val, attrName) => he.decode(val, { isAttributeValue: true }),//default is a=>a
-   tagValueProcessor: (val, tagName) => he.decode(val), //default is a=>a
-   stopNodes: ["parse-me-as-string"]
+   tagValueProcessor: (val, tagName) => {
+      if (!val.replace(/\s/g, '').length) {
+         return ""
+      }
+      return val
+   },
 };
 // Crea
 const JSONName = filename.split(".")[0] + ".json"
@@ -51,7 +51,7 @@ console.log(" > [Conversor] Converting " + filename + " to " + JSONName)
 //    ignoreDoctype: true
 // })
 // const JSONFile = parser.toJson(XMLFile.toString(), {})
-const JSONFile = par.parse(XMLFile.toString(), options);
+const JSONFile = conversor.parse(XMLFile.toString(), options);
 
 // Saving JSON
 console.log(" > [Conversor] Saving " + JSONName)
