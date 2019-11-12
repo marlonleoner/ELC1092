@@ -1,0 +1,16 @@
+{
+   "name": "JSONPath",
+   "version": "1.0.0",
+   "main": "index.js",
+   "license": "MIT",
+   "scripts": {
+      "start": "node src/index.js"
+   },
+   "dependencies": {
+      "json-path-processor": "^0.2.5",
+      "json-query": "^2.2.2",
+      "jsonpath": "^1.0.2",
+      "jsonpath-plus": "^1.1.0",
+      "object-path": "^0.11.4"
+   }
+}
