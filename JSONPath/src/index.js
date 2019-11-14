@@ -1,8 +1,4 @@
 const fs = require("fs")
-const jp = require("jsonpath")
-const jpp = require("json-path-processor");
-const { JSONPath } = require("jsonpath-plus");
-const jsonQuery = require('json-query')
 
 // Verify args
 if (process.argv.length < 3) {
@@ -101,11 +97,50 @@ AllTopicMovies.forEach(movieTopic => {
 console.log("")
 
 // D)
+const allThrillerMovieIDs = []
+JSONObject.topicMap.association.forEach(topic => {
+   const aux = topic.instanceOf
+   if (aux) {
+      if (aux.topicRef._href === "#filme-genero") {
+         if (topic.member[1].topicRef._href === "#thriller") {
+            allThrillerMovieIDs.push(topic.member[0].topicRef._href)
+         }
+      }
+   }
+})
 console.log(" > [D] Quais são os sites dos filmes que são do tipo \"thriller\"?")
+allThrillerMovieIDs.forEach(id => {
+   const movieTopic = AllTopicMovies.find(topic => {
+      return ("#" + topic._id) === id
+   })
+
+   if (movieTopic) {
+      const occLength = movieTopic.occurrence.length
+      if (movieTopic.occurrence[occLength - 1].resourceRef) {
+         console.log(" > [D] " + movieTopic.occurrence[occLength - 1].resourceRef._href)
+      }
+   }
+})
 console.log("")
 
 // E)
 console.log(" > [E] Quantos filmes contém mais de 3 atores como elenco de apoio?")
+const numbersOfMoviesWCastsGT3 = AllTopicMovies.filter(movie => {
+   const occurrenceLength = movie.occurrence.length
+   if (!occurrenceLength) {
+      movie.occurrence = Array(movie.occurrence)
+   }
+
+   const elencoApoio = movie.occurrence.filter(occurrence => {
+      if (occurrence.scope) {
+         return (occurrence.scope.topicRef._href === "#elencoApoio")
+      }
+      return false
+   })
+
+   return elencoApoio.length >= 3
+}).length
+console.log(" > [E] " + numbersOfMoviesWCastsGT3 + " filmes")
 console.log("")
 
 // F)
