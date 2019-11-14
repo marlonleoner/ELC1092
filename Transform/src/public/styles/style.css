@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background: #191920 url(${background}) no-repeat center top; */
+  background: #14181c;
+  -webkit-font-smoothing: antialiased;
+
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px 50px;
+}
+
+body,
+input,
+button {
+  font: 14px Roboto, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.div_movies {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 450px;
+  /* align-items: center; */
+}
+
+.div_movies > p {
+  color: #99aabb;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.div_movies .m_num_movies {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  color: #eee;
+  color: #99aabb;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+.div_movies > strong {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  color: #eee;
+  font-size: 22px;
+  font-family: "Roboto Mono", monospace;
+}
+
+#list_movies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  list-style: none;
+}
+
+#item_movie {
+  flex-direction: column;
+  background: #fff;
+  border-radius: 3px;
+}
+
+#div_item {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+#div_item:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.links {
+  text-decoration: none;
+  color: black;
+  /* color: #7159c1; */
+}
+
+.movie_name {
+  max-width: 225px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.div_movie {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 0 auto;
+
+  display: flex;
+}
+
+.div_movie_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.div_movie_left p {
+  margin-bottom: 7px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bolder;
+  letter-spacing: -0.03em;
+  color: #000;
+}
+
+.m_image {
+  width: 230px;
+  height: 345px;
+  background: black;
+}
+
+.m_movie_infos {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.m_info_item {
+   display: flex;
+   align-items: flex-end;
+   text-decoration: none;
+   margin-left: 5px;
+}
+
+.m_info_item~.m_info_item {
+   margin-top: 10px;
+}
+
+.m_info_item span {
+  color: #2d2d2d;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 0.1px solid #2d2d2d;
+}
+
+.m_info_item:hover span {
+  color: #7159c1;
+  border-bottom: 0.1px solid #7159c1;
+}
+
+.m_info_item > img {
+  margin-right: 7px;
+}
+
+.div_movie_right {
+  margin-left: 50px;
+}
+
+.m_movie_name {
+  font-size: 24px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.m_movie_subtitle {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 2;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: #333;
+}
+
+.m_movie_subtitle_link {
+  border-bottom: 0.1px solid #456;
+  text-decoration: none;
+}
+
+.m_movie_subtitle_link:hover {
+  color: #7159c1;
+  border-bottom: 0.1px solid #7159c1;
+}
+
+.m_movie_synopsis {
+  text-align: justify;
+  margin: 15px auto;
+  color: rgb(80, 91, 102);
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.m_movie_cast span {
+  padding: 1px 1px;
+  border-bottom: 0.1px solid #000;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 600;
+}
+
+.m_cast_list {
+  display: flex;
+  justify-content: left;
+  list-style: none;
+  padding-top: 15px;
+}
+
+.m_cast_item {
+  background: #303840;
+  border-radius: 3px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 7px 15px;
+  text-decoration: none;
+  color: rgb(191, 206, 221);
+  font-size: 12.5px;
+  font-family: "Montserrat", monospace;
+}
+
+.m_cast_item:hover {
+  background: #303840f0;
+  color: #fff;
+}
+
+.m_cast_list li ~ li {
+  margin-left: 10px;
+}

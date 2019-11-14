@@ -1,0 +1,24 @@
+{% extends "./includes/_layout.njk" %}
+
+{% block content %}
+
+   <div class="div_movies">
+      <p>FILMES DIRIGIDO POR</p>
+      <strong>{{director.value}}</strong>
+      <ul id="list_movies">
+         {% for movie in movies %}
+            <li id="item_movie">
+               <a class="links" href={{"/movie/" + movie.id}}>
+                  <div id="div_item">
+                     <strong class="movie_name">{{ movie.titulo }}</strong>
+                     {% if movie.ano %}
+                        <span>({{ movie.ano }})</span>
+                     {% endif %}
+                  </div>
+               </a>
+            </li>
+         {% endfor %}
+      </ul>
+   </div>
+
+{% endblock %}
