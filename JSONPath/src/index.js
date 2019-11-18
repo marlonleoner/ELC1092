@@ -87,7 +87,7 @@ AllTopicMovies.forEach(movieTopic => {
          return false
       })
       // Check if the synopsis contains "especial" word
-      hasEspecialWord = occurrence.resourceData.includes("especial")
+      hasEspecialWord = occurrence.resourceData.match(/\bespecial\b/)
    }
 
    // If contains, show the title in english
