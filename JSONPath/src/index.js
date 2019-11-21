@@ -145,4 +145,104 @@ console.log("")
 
 // F)
 console.log(" > [F] Quais são os ID dos filmes que tem o nome de algum membro do elenco citado na sinopse?")
+const moviesAndTheirActors = []
+
+JSONObject.topicMap.association
+   .filter(topic => topic.instanceOf.topicRef._href === '#filme-elenco')
+   .forEach(topic => {
+      const movieObject = { movieId: "", actors: [] }
+      const movieId = topic.member[0].topicRef._href
+      const actor = topic.member[1].topicRef._href.replace('#', '').replace(/-/g, ' ')
+
+      // console.log(`Filme = ${movieId}\nAtor = ${actor}\n`)
+
+      // search for movie index in array; if not found, returns -1
+      let movieArrayIndex = -1;
+      for (let i = 0; i < moviesAndTheirActors.length; i++) {
+         if (moviesAndTheirActors[i].movieId === movieId) {
+            movieArrayIndex = i;
+            break;
+         }
+         else if (i === moviesAndTheirActors.length - 1) {
+            movieArrayIndex = -1;
+            break;
+         }
+      }
+
+      // if movie with the id doesnt exists, add the new one to the array
+      if (movieArrayIndex === -1) {
+         movieObject.movieId = movieId
+         movieObject.actors.push(actor)
+
+         moviesAndTheirActors.push(movieObject)
+      }
+      else {
+         // if movie with the id already exists, add the actor to its id
+         moviesAndTheirActors[movieArrayIndex].actors.push(actor)
+      }
+   })
+
+// removing # from movieId
+moviesAndTheirActors.forEach(movie => {
+   movie.movieId = movie.movieId.replace('#', '')
+})
+
+const moviesWithCitedCastId = []
+
+AllTopicMovies.forEach(movieTopic => {
+   let movieObject = false;
+   for (let i = 0; i < moviesAndTheirActors.length; i++) {
+      if (moviesAndTheirActors[i].movieId === movieTopic._id) {
+         movieObject = moviesAndTheirActors[i];
+         break;
+      }
+      else if (i === moviesAndTheirActors.length - 1) {
+         movieObject = false;
+         break;
+      }
+   }
+
+   if (movieObject) {
+      let hasWord = false;
+
+      const occurrences = movieTopic.occurrence
+      // Exclude every occurrence that aren't an array
+      if (occurrences.length) {
+         // Find the object that contains "#sinopse"
+         occurrence = occurrences.find(occurrence => {
+            if (occurrence)
+               return occurrence.scope.topicRef._href === "#sinopse"
+
+            return false
+         })
+
+         if (occurrence) {
+            for(let i = 0; i < movieObject.actors.length; i++) {
+               const movieActor = movieObject.actors[i]
+
+               let re = new RegExp('\\b' + movieActor + '\\b', 'i')
+
+               hasActor = occurrence.resourceData.match(re)
+               if(hasActor) {
+                  // console.log(`${movieObject.movieId} | ${movieObject.actors}`)
+                  // console.log(occurrence.resourceData + '\n')
+
+                  moviesWithCitedCastId.push(movieObject.movieId)
+                  break;
+               }
+            }
+            // hasWord = occurrence.resourceData.match(/\bPatrick\b/)
+         }
+      }
+
+      // if (hasWord) {
+      //    console.log(movieTopic)
+      // }
+   }
+})
+
+// moviesAndTheirActors.forEach(movieObject => console.log(movieObject))
+
+moviesWithCitedCastId.forEach(movieId => console.log(movieId))
+
 console.log("")
