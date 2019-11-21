@@ -3,23 +3,16 @@ const he = require('he')
 
 var conversor = require('fast-xml-parser');
 
-// Verify args
-if (process.argv.length < 3) {
-   console.log("Try: yarn start <XML File>")
-   process.exit(0)
-}
-
 // Verify if file exists
-const filename = process.argv[2]
-const filepath = filename
-if (!fs.existsSync(filepath)) {
+const filename = "GioMovies.xtm"
+if (!fs.existsSync(filename)) {
    console.log(" > [Parte1] " + filename + " doesn't exists")
    process.exit(0)
 }
 
 // Open XML File
 console.log(" > [Parte1] Opening " + filename)
-const XMLFile = fs.readFileSync(filepath)
+const XMLFile = fs.readFileSync(filename)
 
 //default options, need not to set
 var options = {
@@ -37,23 +30,15 @@ var options = {
       return val
    },
 };
-// Crea
+// Create JSON
 const JSONName = filename.split(".")[0] + ".json"
-const JSONPath = JSONName
 
 // XML 2 JSON
 console.log(" > [Parte1] Converting " + filename + " to " + JSONName)
-// const JSONFile = conversor.xml2json(XMLFile.toString(), {
-//    compact: false,
-//    spaces: 3,
-//    ignoreDeclaration: true,
-//    ignoreDoctype: true
-// })
-// const JSONFile = parser.toJson(XMLFile.toString(), {})
 const JSONFile = conversor.parse(XMLFile.toString(), options);
 
 // Saving JSON
 console.log(" > [Parte1] Saving " + JSONName)
-fs.writeFileSync(JSONPath, JSON.stringify(JSONFile))
+fs.writeFileSync(JSONName, JSON.stringify(JSONFile))
 
 console.log(" > [Parte1] Done!")
