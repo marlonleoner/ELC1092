@@ -13,12 +13,12 @@ if (process.argv.length < 3) {
 const filename = process.argv[2]
 const filepath = filename
 if (!fs.existsSync(filepath)) {
-   console.log(" > [Conversor] " + filename + " doesn't exists")
+   console.log(" > [Parte1] " + filename + " doesn't exists")
    process.exit(0)
 }
 
 // Open XML File
-console.log(" > [Conversor] Opening " + filename)
+console.log(" > [Parte1] Opening " + filename)
 const XMLFile = fs.readFileSync(filepath)
 
 //default options, need not to set
@@ -42,7 +42,7 @@ const JSONName = filename.split(".")[0] + ".json"
 const JSONPath = JSONName
 
 // XML 2 JSON
-console.log(" > [Conversor] Converting " + filename + " to " + JSONName)
+console.log(" > [Parte1] Converting " + filename + " to " + JSONName)
 // const JSONFile = conversor.xml2json(XMLFile.toString(), {
 //    compact: false,
 //    spaces: 3,
@@ -53,7 +53,7 @@ console.log(" > [Conversor] Converting " + filename + " to " + JSONName)
 const JSONFile = conversor.parse(XMLFile.toString(), options);
 
 // Saving JSON
-console.log(" > [Conversor] Saving " + JSONName)
+console.log(" > [Parte1] Saving " + JSONName)
 fs.writeFileSync(JSONPath, JSON.stringify(JSONFile))
 
-console.log(" > [Conversor] Done!")
+console.log(" > [Parte1] Done!")
