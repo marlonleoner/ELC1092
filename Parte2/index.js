@@ -22,10 +22,67 @@ if (fileext !== "json") {
    process.exit(0)
 }
 
-//
+// JSON File
 const JSONFile = fs.readFileSync(filepath)
 
+// JSON Object
 const JSONObject = JSON.parse(JSONFile.toString());
+
+const MemberSchema = {
+   "$id": "/MemberSchema",
+   "type": "array",
+   "items": {
+      "type": "object",
+      "properties": {
+         "topicRef": { "$ref": "/TopicRefSchema" }
+      }
+   }
+}
+
+const OccurrenceItemSchema = {
+   "$id": "/OccurrenceItemSchema",
+   "type": "object",
+   "properties": {
+      "scope": {
+         "type": "object",
+         "properties": {
+            "topicRef": { "$ref": "/TopicRefSchema" }
+         },
+         "required": ["topicRef"]
+      },
+      "resourceData": { "type": "string" },
+      "instanceOf": { "$ref": "/InstanceOfSchema" },
+      "resourceRef": {
+         "type": "object",
+         "properties": {
+            "_href": { "type": "string" }
+         }
+      }
+   }
+}
+
+const OccurrenceSchema = {
+   "$id": "/OccurrenceSchema",
+   "anyOf": [
+      {
+         "type": "object",
+         "properties": {
+            "scope": {
+               "type": "object",
+               "properties": {
+                  "topicRef": { "$ref": "/TopicRefSchema" }
+               },
+               "required": ["topicRef"]
+            },
+            "resourceData": { "type": "string" }
+         }
+      },
+      {
+         "type": "array",
+         "items": { "$ref": "/OccurrenceItemSchema" }
+      }
+   ]
+}
 
 const BaseNameItemSchema = {
    "$id": "/BaseNameItemSchema",
@@ -107,7 +164,7 @@ const TopicItemsSchema = {
       "instanceOf": { "$ref": "/InstanceOfSchema" },
       "subjectIdentity": { "$ref": "/SubjectIdentitySchema" },
       "baseName": { "$ref": "/BaseNameSchema" },
-      "occurrence": { "type": ["array", "object"] }
+      "occurrence": { "$ref": "/OccurrenceSchema" }
    },
    "required": ["_id", "baseName"]
 }
@@ -116,7 +173,8 @@ const AssociationItemsSchema = {
    "$id": "/AssociationItemsSchema",
    "type": "object",
    "properties": {
-
+      "instanceOf": { "$ref": "/InstanceOfSchema" },
+      "member": { "$ref": "/MemberSchema" }
    }
 }
 
@@ -156,7 +214,10 @@ const Validator = new Ajv({
       SubjectIdentitySchema,
       SubjectIndicatorRefSchema,
       BaseNameSchema,
-      BaseNameItemSchema
+      BaseNameItemSchema,
+      OccurrenceSchema,
+      OccurrenceItemSchema,
+      MemberSchema
    ]
 });
 require('ajv-keywords')(Validator, 'uniqueItemProperties');
@@ -165,8 +226,9 @@ const validate = Validator.compile(Schema);
 
 const valid = validate(JSONObject);
 if (valid) {
-   console.log('Valid!');
+   console.log(' > [Parte2] O arquivo JSON é válido!');
 }
 else {
-   console.log('Invalid: ' + Validator.errorsText(validate.errors));
+   console.log(' > [Parte2] ');
+   console.log(Validator.errorsText(validate.errors));
 }
