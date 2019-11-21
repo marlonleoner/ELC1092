@@ -1,0 +1,22 @@
+{
+   "name": "ELC1092",
+   "version": "1.0.0",
+   "main": "index.js",
+   "repository": "https://github.com/marlonleoner/ELC1092.git",
+   "author": "Marlon Leoner <marlon.leoner@gmail.com>",
+   "license": "MIT",
+   "scripts": {
+      "parte1": "node Parte1/index.js",
+      "parte2": "node Parte2/index.js",
+      "parte3": "node Parte3/index.js",
+      "parte4": "node Parte4/index.js"
+   },
+   "dependencies": {
+      "ajv": "^6.10.2",
+      "ajv-keywords": "^3.4.1",
+      "express": "^4.17.1",
+      "fast-xml-parser": "^3.14.0",
+      "he": "^1.2.0",
+      "nunjucks": "^3.2.0"
+   }
+}
