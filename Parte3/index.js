@@ -8,7 +8,7 @@ if (process.argv.length < 3) {
 
 // Verify if file exists
 const filename = process.argv[2]
-const filepath = "../" + filename
+const filepath = filename
 if (!fs.existsSync(filepath)) {
    console.log(" > [JSONPath] " + filename + " doesn't exists")
    process.exit(0)
@@ -217,13 +217,13 @@ AllTopicMovies.forEach(movieTopic => {
          })
 
          if (occurrence) {
-            for(let i = 0; i < movieObject.actors.length; i++) {
+            for (let i = 0; i < movieObject.actors.length; i++) {
                const movieActor = movieObject.actors[i]
 
                let re = new RegExp('\\b' + movieActor + '\\b', 'i')
 
                hasActor = occurrence.resourceData.match(re)
-               if(hasActor) {
+               if (hasActor) {
                   // console.log(`${movieObject.movieId} | ${movieObject.actors}`)
                   // console.log(occurrence.resourceData + '\n')
 
@@ -243,6 +243,6 @@ AllTopicMovies.forEach(movieTopic => {
 
 // moviesAndTheirActors.forEach(movieObject => console.log(movieObject))
 
-moviesWithCitedCastId.forEach(movieId => console.log(movieId))
+moviesWithCitedCastId.forEach(movieId => console.log(" > [F] " + movieId))
 
 console.log("")

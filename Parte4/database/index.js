@@ -3,7 +3,7 @@ const fs = require("fs")
 
 module.exports = function () {
    const filename = "GioMovies.json"
-   const filepath = path.resolve(__dirname, "..", "..", "..", filename)
+   const filepath = path.resolve(__dirname, "..", "..", filename)
    const JSONFile = fs.readFileSync(filepath)
 
    // Create JSON Object

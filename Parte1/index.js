@@ -5,14 +5,13 @@ var conversor = require('fast-xml-parser');
 
 // Verify args
 if (process.argv.length < 3) {
-   // console.log("Try: " + process.argv[0] + " " + process.argv[1] + " <XML File>")
    console.log("Try: yarn start <XML File>")
    process.exit(0)
 }
 
 // Verify if file exists
 const filename = process.argv[2]
-const filepath = "../" + filename
+const filepath = filename
 if (!fs.existsSync(filepath)) {
    console.log(" > [Conversor] " + filename + " doesn't exists")
    process.exit(0)
@@ -40,7 +39,7 @@ var options = {
 };
 // Crea
 const JSONName = filename.split(".")[0] + ".json"
-const JSONPath = "../" + JSONName
+const JSONPath = JSONName
 
 // XML 2 JSON
 console.log(" > [Conversor] Converting " + filename + " to " + JSONName)

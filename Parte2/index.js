@@ -9,7 +9,7 @@ if (process.argv.length < 3) {
 
 // Verify if file exists
 const filename = process.argv[2]
-const filepath = "../" + filename
+const filepath = filename
 if (!fs.existsSync(filepath)) {
    console.log(" > [Validator] " + filename + " doesn't exists")
    process.exit(0)
@@ -63,11 +63,11 @@ const SubjectIndicatorRefSchema = {
    "$id": "/SubjectIndicatorRefSchema",
    "type": "object",
    "properties": {
-      "@_href": {
+      "_href": {
          "type": "string"
       }
    },
-   "required": ["@_href"]
+   "required": ["_href"]
 }
 
 const SubjectIdentitySchema = {
@@ -82,11 +82,11 @@ const TopicRefSchema = {
    "$id": "/TopicRefSchema",
    "type": "object",
    "properties": {
-      "@_href": {
+      "_href": {
          "type": "string"
       }
    },
-   "required": ["@_href"]
+   "required": ["_href"]
 }
 
 const InstanceOfSchema = {
@@ -101,7 +101,7 @@ const TopicItemsSchema = {
    "$id": "/TopicItemsSchema",
    "type": "object",
    "properties": {
-      "@_id": {
+      "_id": {
          "type": "string"
       },
       "instanceOf": { "$ref": "/InstanceOfSchema" },
@@ -109,7 +109,7 @@ const TopicItemsSchema = {
       "baseName": { "$ref": "/BaseNameSchema" },
       "occurrence": { "type": ["array", "object"] }
    },
-   "required": ["@_id", "baseName"]
+   "required": ["_id", "baseName"]
 }
 
 const AssociationItemsSchema = {
@@ -127,7 +127,7 @@ const TopicMapSchema = {
       "topic": {
          "type": "array",
          "items": { "$ref": "/TopicItemsSchema" },
-         "uniqueItemProperties": ["@_id"]
+         "uniqueItemProperties": ["_id"]
       },
       "association": {
          "type": "array",
