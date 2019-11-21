@@ -2,7 +2,7 @@ const fs = require("fs")
 
 // Verify args
 if (process.argv.length < 3) {
-   console.log(" > [JSONPath] Try: yarn start <JSON File>")
+   console.log(" > [Parte3] Try: yarn start <JSON File>")
    process.exit(0)
 }
 
@@ -10,12 +10,12 @@ if (process.argv.length < 3) {
 const filename = process.argv[2]
 const filepath = filename
 if (!fs.existsSync(filepath)) {
-   console.log(" > [JSONPath] " + filename + " doesn't exists")
+   console.log(" > [Parte3] " + filename + " doesn't exists")
    process.exit(0)
 }
 
 // Open JSON File
-console.log(" > [JSONPath] Opening " + filename)
+console.log(" > [Parte3] Opening " + filename)
 console.log("")
 const JSONFile = fs.readFileSync(filepath)
 
