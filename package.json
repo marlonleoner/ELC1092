@@ -1,9 +1,18 @@
 {
    "name": "ELC1092",
    "version": "1.0.0",
-   "main": "index.js",
    "repository": "https://github.com/marlonleoner/ELC1092.git",
-   "author": "Marlon Leoner <marlon.leoner@gmail.com>",
+   "contributors": [
+      {
+         "name": "Marlon Leoner",
+         "email": "marlon.leoner@gmail.com",
+         "url": "https://github.com/marlonleoner/"
+      },
+      {
+         "name": "Mattheus Einloft",
+         "url": "https://github.com/MattheusEinloft/"
+      }
+   ],
    "license": "MIT",
    "scripts": {
       "parte1": "node Parte1/index.js",
