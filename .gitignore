@@ -1,7 +1,5 @@
 GioMovies.json
 poema.json
+poema.xml
 
-Validator/node_modules/
-Conversor/node_modules/
-JSONPath/node_modules/
-Transform/node_modules/
+node_modules/
