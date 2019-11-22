@@ -140,14 +140,13 @@ console.log("")
 console.log(" > [F] Quais são os ID dos filmes que tem o nome de algum membro do elenco citado na sinopse?")
 const moviesAndTheirActors = []
 
+// create a list of objects with movieId and actors array
 JSONObject.topicMap.association
    .filter(topic => topic.instanceOf.topicRef._href === '#filme-elenco')
    .forEach(topic => {
       const movieObject = { movieId: "", actors: [] }
       const movieId = topic.member[0].topicRef._href
       const actor = topic.member[1].topicRef._href.replace('#', '').replace(/-/g, ' ')
-
-      // console.log(`Filme = ${movieId}\nAtor = ${actor}\n`)
 
       // search for movie index in array; if not found, returns -1
       let movieArrayIndex = -1;
@@ -175,13 +174,14 @@ JSONObject.topicMap.association
       }
    })
 
-// removing # from movieId
+// removes # from movieId
 moviesAndTheirActors.forEach(movie => {
    movie.movieId = movie.movieId.replace('#', '')
 })
 
 const moviesWithCitedCastId = []
 
+// check in each movie synopsis if at least one of the actors is cited
 AllTopicMovies.forEach(movieTopic => {
    let movieObject = false;
    for (let i = 0; i < moviesAndTheirActors.length; i++) {
@@ -196,8 +196,6 @@ AllTopicMovies.forEach(movieTopic => {
    }
 
    if (movieObject) {
-      let hasWord = false;
-
       const occurrences = movieTopic.occurrence
       // Exclude every occurrence that aren't an array
       if (occurrences.length) {
@@ -217,24 +215,14 @@ AllTopicMovies.forEach(movieTopic => {
 
                hasActor = occurrence.resourceData.match(re)
                if (hasActor) {
-                  // console.log(`${movieObject.movieId} | ${movieObject.actors}`)
-                  // console.log(occurrence.resourceData + '\n')
-
                   moviesWithCitedCastId.push(movieObject.movieId)
                   break;
                }
             }
-            // hasWord = occurrence.resourceData.match(/\bPatrick\b/)
          }
       }
-
-      // if (hasWord) {
-      //    console.log(movieTopic)
-      // }
    }
 })
-
-// moviesAndTheirActors.forEach(movieObject => console.log(movieObject))
 
 moviesWithCitedCastId.forEach(movieId => console.log(" > [F] " + movieId))
 
