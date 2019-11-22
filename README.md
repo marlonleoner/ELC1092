@@ -17,16 +17,24 @@ O trabalho desenvolvido utiliza as seguintes ferramentas:
 Com ambas as ferramentas instaladas, Node.js e algum dos gerenciadores de pacotes, é necessário que todas as dependências do projeto sejam instaladas. Dentro da raiz do projeto, basta executar o comando abaixo:
 ```bash
 $ yarn
+# npm install
 ```
 Terminado o processo de configuração das dependências do projeto, basta executar o comando referente a parte desejada:
 ```bash
 # Parte 1
+# npm run parte1
 $ yarn parte1
+
 # Parte 2
+# npm run parte2
 $ yarn parte2
+
 # Parte 3
+# npm run parte3
 $ yarn parte3
+
 # Parte 4
+# npm run parte4
 $ yarn parte4
 ```
 
