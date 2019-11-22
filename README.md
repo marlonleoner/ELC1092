@@ -47,13 +47,13 @@ Na primeira parte deste trabalho é necessário realizar a conversão do arquivo
    $ yarn parte1
    ```
 
-#### Parte 2 - Validação
+#### [Parte 2](./Parte2/) - Validação
 A etapa seguinte é responsável por realizar a validação do arquivo JSON, gerado na etapa anterior. Para executar esta etapa, basta utilizar o código abaixo:
    ```bash
    $ yarn parte2
    ```
 
-### Parte 3 - Consultas
+#### [Parte 3](./Parte3/) - Consultas
 Na terceira etapa é onde ocorre as consultas sobre o arquivo JSON, gerado na primeira parte. As consultas, que devem ser realizadas, e o comando para executar esta etapa encontram-se descritos abaixo:
 - a) Quais são os tipos de gênero de filmes, sem repetição?
 - b) Quais são os títulos dos filmes que foram produzidos em 2000, ordenados alfabeticamente?
@@ -66,7 +66,7 @@ sinopse?
 $ yarn parte3
 ```
 
-### Parte 4 - Transformação
+#### [Parte 4](./Parte4/) - Transformação
 Deve se construir um código que gere um conjunto de páginas HTML para cada nodo do grafo, onde nesta página possui a informação de cada tópico (seus nomes e ocorrências), além de links para todos os tópicos que estão associados com ele. A página inicial terá a apresentação do portal e o link para todos os filmes.  Para executar esta etapa, basta utilizar o código abaixo:
    ```bash
    $ yarn parte4
