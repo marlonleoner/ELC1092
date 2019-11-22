@@ -1,16 +1,9 @@
 const fs = require('fs')
 const Ajv = require('ajv');
 
-// Verify args
-if (process.argv.length < 3) {
-   console.log("Try: yarn start <JSON File>")
-   process.exit(0)
-}
-
 // Verify if file exists
-const filename = process.argv[2]
-const filepath = filename
-if (!fs.existsSync(filepath)) {
+const filename = "GioMovies.json"
+if (!fs.existsSync(filename)) {
    console.log(" > [Validator] " + filename + " doesn't exists")
    process.exit(0)
 }
@@ -23,7 +16,7 @@ if (fileext !== "json") {
 }
 
 // JSON File
-const JSONFile = fs.readFileSync(filepath)
+const JSONFile = fs.readFileSync(filename)
 
 // JSON Object
 const JSONObject = JSON.parse(JSONFile.toString());

@@ -105,3 +105,5 @@ app.use(function (req, res, next) {
 });
 
 app.listen(3000)
+console.log(" > [Parte4] Server running on port 3000")
+console.log(" > [Parte4] http://localhost:3000")
