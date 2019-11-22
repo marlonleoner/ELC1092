@@ -1,5 +1,5 @@
 # Trabalho Final - ELC1092 (2019.02)
-Repositório destinado ao trabalho final da disciplina de Linguagem de Marcação Extensível</br>
+Repositório destinado ao [trabalho final](./Descricao.txt) da disciplina de Linguagem de Marcação Extensível</br>
 
 ## Alunos
    * **[Marlon Leoner](https://github.com/marlonleoner)**</br>
