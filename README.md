@@ -52,12 +52,14 @@ O trabalho proposto é divido em quatro partes. Sendo elas:
 #### [Parte 1](./Parte1/index.js) - Conversão
 Na primeira parte deste trabalho é necessário realizar a conversão do arquivo [GioMovies.xtm](./GioMovies.xtm) para JSON, sem ocorrer perda do conteúdo. Para executar esta etapa, basta utilizar o código abaixo:
    ```bash
+   # npm run parte1
    $ yarn parte1
    ```
 
 #### [Parte 2](./Parte2/index.js) - Validação
 A etapa seguinte é responsável por realizar a validação do arquivo JSON, gerado na etapa anterior. Para executar esta etapa, basta utilizar o código abaixo:
    ```bash
+   # npm run parte2
    $ yarn parte2
    ```
 
@@ -71,11 +73,13 @@ Na terceira etapa é onde ocorre as consultas sobre o arquivo JSON, gerado na pr
 - f) Quais são os ID dos filmes que tem o nome de algum membro do elenco citado na
 sinopse?
 ```bash
+# npm run parte3
 $ yarn parte3
 ```
 
 #### [Parte 4](./Parte4/index.js) - Transformação
 Deve se construir um código que gere um conjunto de páginas HTML para cada nodo do grafo, onde nesta página possui a informação de cada tópico (seus nomes e ocorrências), além de links para todos os tópicos que estão associados com ele. A página inicial terá a apresentação do portal e o link para todos os filmes.  Para executar esta etapa, basta utilizar o código abaixo:
    ```bash
+   # npm run parte4
    $ yarn parte4
    ```
