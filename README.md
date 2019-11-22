@@ -8,7 +8,7 @@ Repositório destinado ao trabalho final da disciplina de Linguagem de Marcaçã
 ## Configurando
 ### Pré-requisitos
 
-O trabalho desenvolvido utiliza as seguintes ferramentas(?):
+O trabalho desenvolvido utiliza as seguintes ferramentas:
    * A plataforma, construída sobre o JavaScript, [Node.js](https://nodejs.org/en/);
    * Um gerenciador de pacotes para Javascript: [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 </br>Obs.: No desenvolvimento foi utilizado o Yarn como gerenciador.
