@@ -34,12 +34,12 @@ console.log("")
 // B)
 // Get all movie IDs produced in 2000
 var allMovieIDsProducedIn2000 = []
-JSONObject.topicMap.association.forEach(topic => {
-   const aux = topic.instanceOf
+JSONObject.topicMap.association.forEach(association => {
+   const aux = association.instanceOf
    if (aux) {
       if (aux.topicRef._href === "#filme-ano") {
-         if (topic.member[1].topicRef._href === "#id_2000") {
-            allMovieIDsProducedIn2000.push(topic.member[0].topicRef._href)
+         if (association.member[1].topicRef._href === "#id_2000") {
+            allMovieIDsProducedIn2000.push(association.member[0].topicRef._href)
          }
       }
    }
@@ -74,10 +74,7 @@ AllTopicMovies.forEach(movieTopic => {
    if (occurrences.length) {
       // Find the object that contains "#sinopse"
       occurrence = occurrences.find(occurrence => {
-         if (occurrence)
-            return occurrence.scope.topicRef._href === "#sinopse"
-
-         return false
+         return occurrence.scope.topicRef._href === "#sinopse"
       })
       // Check if the synopsis contains "especial" word
       hasEspecialWord = occurrence.resourceData.match(/\bespecial\b/)
@@ -91,12 +88,12 @@ console.log("")
 
 // D)
 const allThrillerMovieIDs = []
-JSONObject.topicMap.association.forEach(topic => {
-   const aux = topic.instanceOf
+JSONObject.topicMap.association.forEach(association => {
+   const aux = association.instanceOf
    if (aux) {
       if (aux.topicRef._href === "#filme-genero") {
-         if (topic.member[1].topicRef._href === "#thriller") {
-            allThrillerMovieIDs.push(topic.member[0].topicRef._href)
+         if (association.member[1].topicRef._href === "#thriller") {
+            allThrillerMovieIDs.push(association.member[0].topicRef._href)
          }
       }
    }
