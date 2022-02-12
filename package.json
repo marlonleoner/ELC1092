@@ -21,7 +21,7 @@
       "parte4": "node Parte4/index.js"
    },
    "dependencies": {
-      "ajv": "^6.10.2",
+      "ajv": "^6.12.3",
       "ajv-keywords": "^3.4.1",
       "express": "^4.17.1",
       "fast-xml-parser": "^3.14.0",
